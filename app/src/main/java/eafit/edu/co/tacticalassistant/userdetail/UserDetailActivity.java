@@ -30,8 +30,6 @@ public class UserDetailActivity extends AppCompatActivity {
                     .add(R.id.user_detail_container, fragment)
                     .commit();
         }
-
-
     }
 
     @Override

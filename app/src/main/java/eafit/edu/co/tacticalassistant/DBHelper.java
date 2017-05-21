@@ -13,6 +13,7 @@ public class DBHelper  extends SQLiteOpenHelper{
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Users.db";
 
+
     public DBHelper(Context context, String institute, SQLiteDatabase.CursorFactory factory, int i) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
@@ -20,12 +21,10 @@ public class DBHelper  extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         //db.execSQL("CREATE TABLE Users(code INTEGER PRIMARY KEY AUTOINCREMENT,user TEXT,password TEXT)");
-        //db.execSQL("INSERT INTO Users VALUES (01,'admin','admin123*')");
-
         db.execSQL("CREATE TABLE " + UserEntry.TABLE_NAME + " ("
                 + UserEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + UserEntry.ID + "INTEGER NOT NULL,"
-                + UserEntry.PASSWORD + "TEXT NOT NULL,"
+                + UserEntry.ID + " INTEGER NOT NULL,"
+                + UserEntry.PASSWORD + " TEXT NOT NULL,"
                 + UserEntry.USER + " TEXT NOT NULL,"
                 + UserEntry.NAME + " TEXT NOT NULL,"
                 + UserEntry.POSITION + " TEXT NOT NULL,"
@@ -33,11 +32,12 @@ public class DBHelper  extends SQLiteOpenHelper{
                 + UserEntry.BIO + " TEXT NOT NULL,"
                 + UserEntry.AVATAR + " TEXT,"
                 + "UNIQUE (" + UserEntry.ID + "))");
+        db.execSQL("INSERT INTO User VALUES (01, 'admin123*', 'admin', 'lina', 'administrator', '1234567', 'khjggu', '')");
         mockData(db);
     }
 
     private void mockData(SQLiteDatabase sqLiteDatabase) {
-        mockUser(sqLiteDatabase, new User("Bangulo","Brayan Angulo", "Defensa",
+        mockUser(sqLiteDatabase, new User("Bangulo", "Brayan Angulo", "Defensa",
                 "300 200 1111", "Brayan Angulo es un futbolista colombiano nacionalizado español. Juega de Lateral izquierdo y su equipo actual es el Jaguares de Chiapas de la Liga Mexicana.",
                 "carlos_perez.jpg"));
 
@@ -49,8 +49,8 @@ public class DBHelper  extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("CREATE TABLE Users(code INTEGER PRIMARY KEY AUTOINCREMENT,user TEXT,password TEXT)");
-        db.execSQL("INSERT INTO Users VALUES(01,'admin','admin123*')");
+        //db.execSQL("CREATE TABLE User(code INTEGER PRIMARY KEY AUTOINCREMENT,user TEXT,password TEXT)");
+        //db.execSQL("INSERT INTO Users VALUES(01,'admin','admin123*')");
     }
 
     public long saveUser(User user) {

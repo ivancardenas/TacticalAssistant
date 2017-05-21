@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class Main extends AppCompatActivity {
 
     EditText et1,et2;
+    private Cursor file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +22,12 @@ public class Main extends AppCompatActivity {
         et1= (EditText) findViewById(R.id.etUser);
         et2= (EditText) findViewById(R.id.etPassword);
     }
-
     public void ingress(View v){
         DBHelper admin= new DBHelper(this,"institute",null,1);
         SQLiteDatabase db=admin.getWritableDatabase();
         String user1=et1.getText().toString();
         String password1=et2.getText().toString();
-        Cursor file = db.rawQuery("SELECT user,password from Users where user='" + user1 + "' and password='" + password1 + "'", null);
+        file = db.rawQuery("SELECT user,password from User where user='"+user1+"' and password='"+password1+"'", null);
         if (file.moveToFirst()){
             String user= file.getString(0);
             String pass= file.getString(1);
@@ -37,7 +37,7 @@ public class Main extends AppCompatActivity {
                 et1.setText("");
                 et2.setText("");
             }else{
-                Toast.makeText(Main.this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                Toast.makeText(Main.this, "Incorrect user or password", Toast.LENGTH_LONG).show();
                 et1.setText("");
                 et2.setText("");
             }

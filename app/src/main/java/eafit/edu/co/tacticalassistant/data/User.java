@@ -17,7 +17,7 @@ public class User{
     private String bio;
     private String avatar;
 
-    public User(String users, String user, String password, String name,
+    public User(String bio, String user, String password, String name,
                 String position, String phoneNumber) {
         this.id = UUID.randomUUID().toString();
         this.password = password;
@@ -55,8 +55,6 @@ public class User{
     public String getId() {
         return id;
     }
-
-    public String getPassword() {return password; }
 
     public String getUser() {return user; }
 
