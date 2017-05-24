@@ -20,6 +20,8 @@ import eafit.edu.co.tacticalassistant.addedituser.AddEditUserActivity;
 import eafit.edu.co.tacticalassistant.userdetail.UserDetailActivity;
 import eafit.edu.co.tacticalassistant.R;
 
+import static eafit.edu.co.tacticalassistant.DBHelper.DATABASE_NAME;
+
 public class UsersFragment extends Fragment {
     public static final int REQUEST_UPDATE_DELETE_USER = 2;
 
@@ -70,10 +72,10 @@ public class UsersFragment extends Fragment {
         });
 
 
-        getActivity().deleteDatabase(DBHelper.DATABASE_NAME);
+        getActivity().deleteDatabase(DATABASE_NAME);
 
         // Instancia de helper
-        mUsersDbHelper = new DBHelper(getActivity(), "institute", null, 1);
+        mUsersDbHelper = new DBHelper(getActivity(), DATABASE_NAME, null, 1);
         // Carga de datos
         loadUsers();
         return root;

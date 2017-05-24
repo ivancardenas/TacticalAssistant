@@ -17,6 +17,9 @@ import android.widget.Toast;
 import eafit.edu.co.tacticalassistant.DBHelper;
 import eafit.edu.co.tacticalassistant.data.User;
 import eafit.edu.co.tacticalassistant.R;
+
+import static eafit.edu.co.tacticalassistant.DBHelper.DATABASE_NAME;
+
 public class AddEditUserFragment extends Fragment {
     private static final String ARG_USER_ID = "arg_user_id";
 
@@ -84,7 +87,7 @@ public class AddEditUserFragment extends Fragment {
             }
         });
 
-        mUserDbHelper = new DBHelper(getActivity(), "institute", null, 1);
+        mUserDbHelper = new DBHelper(getActivity(),DATABASE_NAME, null, 1);
 
         // Carga de datos
         if (mUserId != null) {
@@ -100,6 +103,7 @@ public class AddEditUserFragment extends Fragment {
 
     private void addEditUser() {
         boolean error = false;
+        String id = mUserId;
         String password = mPasswordField.getText().toString();
         String users = mUserField.getText().toString();
         String name = mNameField.getText().toString();
@@ -141,7 +145,7 @@ public class AddEditUserFragment extends Fragment {
             return;
         }
 
-        User user = new User(users, name, position, phoneNumber, bio, "");
+        User user = new User(id, users, name, position, phoneNumber, bio, "");
 
         new AddEditUserTask().execute(user);
 

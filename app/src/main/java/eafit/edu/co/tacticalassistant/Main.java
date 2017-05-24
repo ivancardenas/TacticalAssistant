@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static eafit.edu.co.tacticalassistant.DBHelper.DATABASE_NAME;
+
 public class Main extends AppCompatActivity {
 
     EditText et1,et2;
@@ -23,7 +25,7 @@ public class Main extends AppCompatActivity {
         et2= (EditText) findViewById(R.id.etPassword);
     }
     public void ingress(View v){
-        DBHelper admin= new DBHelper(this,"institute",null,1);
+        DBHelper admin= new DBHelper(this,DATABASE_NAME,null,1);
         SQLiteDatabase db=admin.getWritableDatabase();
         String user1=et1.getText().toString();
         String password1=et2.getText().toString();

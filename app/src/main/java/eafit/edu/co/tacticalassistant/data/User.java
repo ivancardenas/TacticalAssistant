@@ -17,7 +17,7 @@ public class User{
     private String bio;
     private String avatar;
 
-    public User(String bio, String user, String password, String name,
+    public User(String id, String bio, String user, String password, String name,
                 String position, String phoneNumber) {
         this.id = UUID.randomUUID().toString();
         this.password = password;
