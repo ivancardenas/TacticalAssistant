@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tactical Assistant</string>
-    <string name="wellcome">Wellcome</string>
+    <string name="Wellcome">Wellcome</string>
     <string name="register_user">Register user</string>
     <string name="title_activity_user_detail">Detail</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

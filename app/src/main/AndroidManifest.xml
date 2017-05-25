@@ -18,8 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register" />
-        <activity android:name=".Menu"></activity>
-        <activity android:name=".addedituser.AddEditUserActivity"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".addedituser.AddEditUserActivity"/>
 
     </application>
 
